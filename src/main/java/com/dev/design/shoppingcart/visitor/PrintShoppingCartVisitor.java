@@ -8,7 +8,7 @@ public class PrintShoppingCartVisitor implements IShoppingCartVisitor {
 	}
 
 	public void visitDiscount(Discount discount) {
-		System.out.println("Discount : " + discount.getDiscount() + "%");
+		System.out.println("Discount : 2 for 3 Apples and buy one get one free Orange " );
 	}
 
 	public double visitShoppingCart(ShoppingCart shoppingCart) {

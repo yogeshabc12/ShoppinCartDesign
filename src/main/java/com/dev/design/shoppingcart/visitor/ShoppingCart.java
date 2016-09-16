@@ -15,9 +15,14 @@ public class ShoppingCart implements IShoppingCartElement {
 		cartItems.add(shoppingCartElement);
 	}
 	
+	public List<IShoppingCartElement> getItems() {
+		return this.cartItems;
+	}
+	
+	
 	
 	public void giveDiscount() {
-		Discount discount = new Discount(10);
+		Discount discount = new Discount(0);
 		discount.setShoppingCart(this);
 		cartItems.add(discount);
 	}

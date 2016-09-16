@@ -1,5 +1,7 @@
 package com.dev.design.shoppingcart.visitor;
 
+import java.util.List;
+
 public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 
 	public void visitCartItem(Item cartItem) {
@@ -15,10 +17,28 @@ public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 
 	public void visitDiscount(Discount discount) {
 		System.out.println("\nTotal bill : " + discount.getShoppingCart().getTotalBill());
-		discount.getShoppingCart().setTotalBill(
-				discount.getShoppingCart().getTotalBill() * (100-discount.getDiscount())/100);
+		double appleDiscount = 0;
+		double orangeDiscount = 0;
+		List<IShoppingCartElement> items = discount.getShoppingCart().getCartItems();
+		for (int i=0; i<items.size(); ++i) {
+		  if (items.get(i) != null) {
+			  Object item = (Object) items.get(i);
+			  if (item instanceof Item) {
+				  Item fruitType = (Item) item;
+			    if(fruitType.getName().equals("APPLE")) {
+			    	appleDiscount = (fruitType.getItemCount()  / 3) * fruitType.getPrice();
+		       } else {
+			    	orangeDiscount = (fruitType.getItemCount()  / 2 ) * fruitType.getPrice();
+			
+			    }
+			 }
+			}
+		  }
 		
-		System.out.println("After Discount (" + discount.getDiscount() + "%) : " + 
+		discount.getShoppingCart().setTotalBill(
+				discount.getShoppingCart().getTotalBill()  - (appleDiscount + orangeDiscount));
+		
+		System.out.println("After Discount  : " + 
 				discount.getShoppingCart().getTotalBill());
 	}
 
