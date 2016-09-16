@@ -7,8 +7,9 @@ public class PrintShoppingCartVisitor implements IShoppingCartVisitor {
 				+ cartItem.getPrice());
 	}
 
-	public void visitDiscount(Discount discount) {
+	public double visitDiscount(Discount discount) {
 		System.out.println("Discount : 2 for 3 Apples and buy one get one free Orange " );
+		return 0;
 	}
 
 	public double visitShoppingCart(ShoppingCart shoppingCart) {

@@ -15,7 +15,7 @@ public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 				"(" + cartItem.getPrice() + ") - Rs." + itemCost);
 	}
 
-	public void visitDiscount(Discount discount) {
+	public double visitDiscount(Discount discount) {
 		System.out.println("\nTotal bill : " + discount.getShoppingCart().getTotalBill());
 		double appleDiscount = 0;
 		double orangeDiscount = 0;
@@ -40,6 +40,7 @@ public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 		
 		System.out.println("After Discount  : " + 
 				discount.getShoppingCart().getTotalBill());
+		return discount.getShoppingCart().getTotalBill();
 	}
 
 

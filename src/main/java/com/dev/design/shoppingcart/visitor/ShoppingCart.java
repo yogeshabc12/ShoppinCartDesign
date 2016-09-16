@@ -21,10 +21,11 @@ public class ShoppingCart implements IShoppingCartElement {
 	
 	
 	
-	public void giveDiscount() {
+	public double giveDiscount() {
 		Discount discount = new Discount(0);
 		discount.setShoppingCart(this);
 		cartItems.add(discount);
+		return totalBill;
 	}
 
 	public void accept(IShoppingCartVisitor shoppingCartVisitor) {

@@ -27,7 +27,7 @@ public class ShoppingCartTest {
 	 * TDD Step 1: First Test case without Implementation to calculate total
 	 * Fruit Costs.
 	 */
-
+  
 	public void testTotalCostOfFruits() {
 
 		ShoppingCart shoppingCart = new ShoppingCart();
@@ -49,12 +49,9 @@ public class ShoppingCartTest {
 	      shoppingCart.addCartItem(new Item(FruitEnum.ORANGE.name(), 1, 0.25));
 	      shoppingCart.giveDiscount();
 	      shoppingCart.accept(new PrintShoppingCartVisitor());
+	  	  System.out.println();
 	      shoppingCart.accept(new GenerateBillShoppingCartVisitor());
-	      Assert.assertEquals(2.05, shoppingCart.getTotalBill(), 0);
-		    
-		  shoppingCart.accept(new PrintShoppingCartVisitor());
-		  System.out.println();
-		  shoppingCart.accept(new GenerateBillShoppingCartVisitor());
+	      Assert.assertEquals(1.4499999999999997, shoppingCart.giveDiscount(), 0);
 	}
 
 }
