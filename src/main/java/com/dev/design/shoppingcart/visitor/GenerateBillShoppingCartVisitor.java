@@ -1,5 +1,7 @@
 package com.dev.design.shoppingcart.visitor;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
@@ -8,7 +10,7 @@ public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 		
 		double itemCost = cartItem.getItemCount() * cartItem.getPrice();
 		cartItem.getShoppingCart().setTotalBill(
-				cartItem.getShoppingCart().getTotalBill() + itemCost);
+				cartItem.getShoppingCart().getTotalBill() + round(itemCost, 2));
 		
 		System.out.println(cartItem.getItemCount() + " " + 
 				cartItem.getName().toUpperCase() + 
@@ -36,7 +38,7 @@ public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 		  }
 		
 		discount.getShoppingCart().setTotalBill(
-				discount.getShoppingCart().getTotalBill()  - (appleDiscount + orangeDiscount));
+				round((discount.getShoppingCart().getTotalBill()  - (appleDiscount + orangeDiscount)), 2));
 		
 		System.out.println("After Discount  : " + 
 				discount.getShoppingCart().getTotalBill());
@@ -54,6 +56,14 @@ public class GenerateBillShoppingCartVisitor implements IShoppingCartVisitor {
 		
 		System.out.println("\nAmount to pay : " + shoppingCart.getTotalBill());
 		return shoppingCart.getTotalBill();
+	}
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
 	}
 
 }

@@ -13,10 +13,8 @@ public class PrintShoppingCartVisitor implements IShoppingCartVisitor {
 	}
 
 	public double visitShoppingCart(ShoppingCart shoppingCart) {
- 
-		System.out.println("---- Shopping Cart Vistor Trace ----");
-        double price =0;
-		for (int i = 0; i < shoppingCart.getCartItems().size(); i++) {
+ 		System.out.println("---- Shopping Cart Vistor Trace ----");
+        for (int i = 0; i < shoppingCart.getCartItems().size(); i++) {
 		  shoppingCart.getCartItems().get(i).accept(this);
 		}
 		return 0;

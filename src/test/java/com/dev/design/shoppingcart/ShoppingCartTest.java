@@ -51,7 +51,7 @@ public class ShoppingCartTest {
 	      shoppingCart.accept(new PrintShoppingCartVisitor());
 	  	  System.out.println();
 	      shoppingCart.accept(new GenerateBillShoppingCartVisitor());
-	      Assert.assertEquals(1.4499999999999997, shoppingCart.giveDiscount(), 0);
+	      Assert.assertEquals(1.45, shoppingCart.giveDiscount(), 0);
 	}
 
 }
